@@ -1,18 +1,15 @@
 import express from 'express';
 
-class Server{
-    app;
-    constructor(){
-        this.app = express()
-    }
-    
-    routes(){
+class Server {
+  app;
 
-    }
+  constructor() {
+    this.app = express();
+  }
 
-    middlewares(){
+  routes() {}
 
-    }
+  middlewares() {}
 }
 
-export default new Server().app
+export default new Server().app;
