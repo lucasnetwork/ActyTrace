@@ -1,11 +1,6 @@
 {
-   "type": "mysql",
-   "host": "localhost",
-   "port": 3306,
-   "username": "test",
-   "password": "test",
-   "database": "test",
-   "synchronize": true,
+   "type": "sqlite",
+   "database":"./src/database/database.sqlite",
    "logging": false,
    "entities": [
       "src/entity/**/*.ts"
