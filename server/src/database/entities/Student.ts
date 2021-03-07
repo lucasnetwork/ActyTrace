@@ -7,10 +7,4 @@ export default class Student{
 
     @Column()
     userId:number;
-
-    @Column()
-    idBoletim:number;
-    
-    @Column()
-    coursersId:number;
 }
