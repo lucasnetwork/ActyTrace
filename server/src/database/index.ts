@@ -1,15 +1,9 @@
 import "reflect-metadata";
-import {createConnection} from 'typeorm'
+import {createConnection,Connection} from 'typeorm'
 import Student from '~/database/entities/Student'
+import User from '~/database/entities/User'
 
-export default createConnection({
-    type:'postgres',
-    host:'',
-    port:3306,
-    username:'root',
-    password:'admin',
-    database:'test',
-    entities:[Student],
-    synchronize:true,
-    logging:false
-})
+export default () :Promise<Connection> =>{
+    return createConnection({
+    database:'./src/database/database.sqlite',
+})}

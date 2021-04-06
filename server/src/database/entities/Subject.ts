@@ -7,11 +7,8 @@ export default class User{
 
     @Column()
     name:string;
-
+    
     @Column()
-    startHour:string;
-
-    @Column()
-    endHour:string;
+    description:string;
 
 }
