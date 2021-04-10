@@ -1,12 +1,16 @@
-import express from 'express';
+import express,{Express} from 'express';
+import routes from './app/routes'
 class Server {
-  app;
+  app:Express;
 
   constructor() {
     this.app = express();
+    this.routes()
   }
 
-  routes() {}
+  routes() {
+    this.app.use(routes)
+  }
 
   middlewares() {}
 }
