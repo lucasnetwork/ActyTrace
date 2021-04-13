@@ -12,7 +12,7 @@ export class createSubjects1618016915785 implements MigrationInterface {
                     isPrimary:true,
                 },
                 {
-                    name:"name",
+                    name:"nameUser",
                     type:"varchar",
                 },
                 {
