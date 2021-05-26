@@ -8,9 +8,9 @@ export default class ClassToStudent{
     @PrimaryColumn()
     id:number;
     @ManyToMany(() => Class,Class => Class.id,{primary:true,})
-    idClass:number;
+    idClass:Class[];
 
     @ManyToMany(() => User, user => user.id,{primary:true})
     @JoinColumn()
-    idUser:User;
+    idUser:User[];
 }
