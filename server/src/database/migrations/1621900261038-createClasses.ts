@@ -1,3 +1,4 @@
+import { query } from "express";
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class createClasses1621900261038 implements MigrationInterface {
@@ -19,6 +20,7 @@ export class createClasses1621900261038 implements MigrationInterface {
             },{
                 name:"idSubject",
                 type:"int"
+                
             }],
             foreignKeys:[
                 {
@@ -29,13 +31,15 @@ export class createClasses1621900261038 implements MigrationInterface {
                 {
                     columnNames:["idSubject"],
                     referencedColumnNames:["id"],
-                    referencedTableName:"subjects"
+                    referencedTableName:"subjects",
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("classes")
     }
+
 
 }
