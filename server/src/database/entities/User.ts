@@ -1,10 +1,9 @@
 import {Entity,Column,PrimaryGeneratedColumn} from 'typeorm'
-import { v4 as uuid } from 'uuid';
 
 @Entity("users")
 export default class User{
-    @PrimaryGeneratedColumn()
-     id:string;
+    @PrimaryGeneratedColumn('uuid')
+     id:number;
 
     @Column()
     email:string;
@@ -14,4 +13,7 @@ export default class User{
 
     @Column()
     password:string;
+
+    @Column()
+    type:string
 }

@@ -4,7 +4,7 @@ export class createClassesToStudents1622071704627 implements MigrationInterface 
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name:"classesToStudents",
+            name:"classes_to_student",
             columns:[
                 {
                     name:"id",

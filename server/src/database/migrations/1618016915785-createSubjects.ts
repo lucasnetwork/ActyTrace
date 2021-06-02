@@ -9,10 +9,12 @@ export class createSubjects1618016915785 implements MigrationInterface {
                 {
                     name:"id",
                     type:"uuid",
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()',
                     isPrimary:true,
                 },
                 {
-                    name:"nameUser",
+                    name:"name",
                     type:"varchar",
                 },
                 {
