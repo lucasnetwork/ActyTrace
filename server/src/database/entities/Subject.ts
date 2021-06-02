@@ -2,7 +2,7 @@ import {Entity,Column,PrimaryGeneratedColumn} from 'typeorm'
 
 @Entity("subjects")
 export default class Subject{
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id:number;
 
     @Column()
