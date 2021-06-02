@@ -5,16 +5,23 @@ import bcrypt from 'bcrypt'
 
 class UserController{
     async create(req:Request,res:Response){
-        const {email,name,password,profileUrl} = req.body
+        const {email,name,password,type} = req.body
         const entityManager  =  getRepository(User)
-        const existUser = await entityManager.findOne({email:email})
-        if(existUser){
-            return res.status(400).send({error:"User exist"})
+        try{
+            const existUser = await entityManager.findOne({email:email})
+            if(existUser){
+                return res.status(400).send({error:"User exist"})
+            }
+            const hash = await bcrypt.hash(password,10)
+            const user =  entityManager.create({email,name,password:hash,type})
+            
+        console.log(user)
+            await entityManager.save(user)
+            return res.status(201).json(user)
+        }catch{
+            return res.status(400).json({error:"error"})
+
         }
-        const hash = await bcrypt.hash(password,10)
-        const user =  entityManager.create({email,name,password:hash,profileUrl})
-        entityManager.save(user)
-        return res.status(201).json(user)
     }
 
     async index(req:Request,res:Response){
