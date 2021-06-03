@@ -15,7 +15,6 @@ class UserController{
             const hash = await bcrypt.hash(password,10)
             const user =  entityManager.create({email,name,password:hash,type})
             
-        console.log(user)
             await entityManager.save(user)
             return res.status(201).json(user)
         }catch{
