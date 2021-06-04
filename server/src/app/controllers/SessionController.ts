@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import User from '../../database/entities/User'
 import {Request,Response} from 'express'
 import { getRepository } from 'typeorm'
+import jwt from 'jsonwebtoken'
 
 class SessionController{
     async create(req:Request,res:Response){
@@ -15,10 +16,15 @@ class SessionController{
                 return res.status(400).json({error:"user not exist"})
             }
             
-            const compare =await bcrypt.compareSync(password,existUser.password)
-                
-            console.log(compare)
-            return res.status(200).json(compare)
+            const compare = bcrypt.compareSync(password,existUser.password)
+            if(!compare){
+            return res.status(400).json({error:"password error"})
+            }
+            
+            const token = jwt.sign({id:existUser.id},"32132",{
+                expiresIn:60*60*24*10
+            })
+            return res.status(200).json({token})
 
         }catch{
             return res.status(400).json({error:"user not exist"})
