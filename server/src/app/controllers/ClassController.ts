@@ -10,7 +10,7 @@ class ClassController{
         const entityManagerClass = getRepository(Class)
         const entityManagerUser = getRepository(User)
         const entityManagerSubject = getRepository(Subject)
-        
+        console.log(req.token)
         try{
             const existTeacher = await entityManagerUser.findOne({where:{
                 id:idTeacher,
