@@ -3,7 +3,8 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb-base', 'prettier/@typescript-eslint','plugin:import/typescript'],
+
+  extends: ['airbnb-base', 'prettier', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -11,20 +12,11 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'linebreak-style': 'off',
     'class-methods-use-this': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-      },
-    ],
-    'import/resolver': {
-      node: {
-        extensions: ['.ts', '.jsx'],
-      },
-    },
+    'import/resolver': 'off',
   },
 };
