@@ -10,11 +10,11 @@ class UserController {
     try {
       const existUser = await entityManager.findOne({ email });
       if (existUser) {
-        return res.status(400).send({ error: 'User exist' });
+        return res.status(400).json({ error: 'User exist' });
       }
       const hash = await bcrypt.hash(password, 10);
       const user = entityManager.create({ email, name, password: hash, type });
-
+      console.log(user);
       await entityManager.save(user);
       return res.status(201).json(user);
     } catch {
