@@ -1,14 +1,13 @@
-import {Entity,Column,PrimaryGeneratedColumn} from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("subjects")
-export default class Subject{
-    @PrimaryGeneratedColumn('uuid')
-    id:number;
+@Entity('subjects')
+export default class Subject {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-    @Column()
-    name:string;
-    
-    @Column()
-    description:string;
+  @Column()
+  name: string;
 
+  @Column()
+  description: string;
 }
