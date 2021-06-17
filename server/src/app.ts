@@ -1,16 +1,20 @@
-import express, { Express } from 'express';
+import express from 'express';
 import { errors } from 'celebrate';
+import dotenv from 'dotenv';
 import routes from './app/routes';
 import createConnection from './database';
+import 'reflect-metadata';
 
+dotenv.config();
 createConnection();
 class Server {
-  app: Express;
+  app: any;
 
   constructor() {
     this.app = express();
     this.middlewares();
     this.routes();
+
     this.app.use(errors());
   }
 

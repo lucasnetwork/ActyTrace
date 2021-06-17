@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
 
-  extends: ['airbnb-base', 'prettier', 'plugin:@typescript-eslint/recommended'],
+  extends: ['airbnb-base', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -18,5 +18,6 @@ module.exports = {
     'linebreak-style': 'off',
     'class-methods-use-this': 'off',
     'import/resolver': 'off',
+    'no-undef': 'off',
   },
 };
