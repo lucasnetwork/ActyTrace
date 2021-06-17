@@ -6,7 +6,4 @@ export default celebrate({
     idTeacher: Joi.number().required(),
     idSubject: Joi.number().required(),
   }),
-  [Segments.HEADERS]: Joi.object().keys({
-    Authorization: Joi.string().required(),
-  }),
 });
