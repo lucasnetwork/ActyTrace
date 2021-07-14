@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import bcrypt from 'bcrypt';
 import User from '../../database/entities/User';
+import NodeMailerConfig from '../config/mailConfig';
 
 class UserController {
   async create(req: Request, res: Response) {
@@ -14,8 +15,15 @@ class UserController {
       }
       const hash = await bcrypt.hash(password, 10);
       const user = entityManager.create({ email, name, password: hash, type });
-      console.log(user);
       await entityManager.save(user);
+      const nodeMail = new NodeMailerConfig();
+      await nodeMail.execute(
+        'daemon@nodemailer.com',
+        'mailer@nodemailer.com',
+        'Bem vindo',
+        'Benvindo usuario'
+      );
+
       return res.status(201).json(user);
     } catch {
       return res.status(400).json({ error: 'error' });
