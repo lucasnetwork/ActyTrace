@@ -15,13 +15,14 @@ export default function verifyToken(
   const tokenArray = authorization.split(' ');
 
   if (tokenArray === undefined) {
-    return res.status(403).json({ error: 'error' });
+    return res.status(403).json({ error: 'Token é necessário' });
   }
   const [, token] = tokenArray;
   try {
     jwt.verify(token, '32132');
-  } catch {
-    return res.status(403).json({ error: 'error' });
+  } catch (e) {
+    console.log(e);
+    return res.status(403).json({ error: 'token invalido' });
   }
   const decoded: any = jwt.decode(token);
   req.token = decoded;
